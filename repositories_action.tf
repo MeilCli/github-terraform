@@ -9,7 +9,7 @@ locals {
       topics      = ["actions", "github-actions"]
     }
     "check-run-auto" = {
-      description = "",
+      description = "Action of github commit status",
       topics      = []
     }
     "common-lint-reporter" = {
