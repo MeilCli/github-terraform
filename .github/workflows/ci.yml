@@ -37,7 +37,7 @@ jobs:
           show: true
           id: "terraform-result"
           body: |
-
+            **Terraform Results:**
             #### Terraform Format and Style 🖌`${{ steps.fmt.outcome }}`
             #### Terraform Initialization ⚙️`${{ steps.init.outcome }}`
             #### Terraform Validation 🤖`${{ steps.validate.outcome }}`
@@ -48,6 +48,7 @@ jobs:
             ${{ steps.plan.outputs.stdout }}
 
             ```
+            </details>
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
