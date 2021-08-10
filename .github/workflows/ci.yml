@@ -52,3 +52,27 @@ jobs:
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_github_token: ${{ secrets.MEILCLI_TOKEN }}
+    needs: terraform
+    environment:
+      name: production
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          message: "update tfstate"
