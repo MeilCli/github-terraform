@@ -1,0 +1,11 @@
+{
+    "extensions.ignoreRecommendations": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.rulers": [
+        120
+    ],
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform"
+    }
+}

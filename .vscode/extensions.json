@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "hashicorp.terraform",
+        "bierner.markdown-preview-github-styles"
+    ]
+}
