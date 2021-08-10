@@ -29,3 +29,20 @@ jobs:
         if: github.event_name == 'pull_request'
         run: terraform plan -no-color
         continue-on-error: true
+      - name: Comment to pull request
+        uses: MeilCli/hidable-comment-action@v1
+        if: github.event_name == 'pull_request'
+        show: true
+        id: "terraform-result"
+        body: |
+          #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+          #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+          #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+          #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+          <details><summary>Show Plan</summary>
+          \`\`\`
+          ${{ steps.plan.outputs.stdout }}
+          \`\`\`
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
