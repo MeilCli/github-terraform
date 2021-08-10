@@ -17,7 +17,7 @@ locals {
       topics      = ["lint", "reporting", "github-actions"]
     }
     "review-state-action" = {
-      description = "",
+      description = "WIP repository",
       topics      = []
     }
   }
