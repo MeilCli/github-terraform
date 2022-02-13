@@ -16,7 +16,7 @@ locals {
 }
 
 resource "github_repository_collaborator" "notion_db_notification" {
-  depends_on = [github_repository.notion_db_notification]
+  depends_on = [github_repository.notion-db-notification]
   for_each   = toset(local.collaborators_notion_db_notification)
   repository = "notion-db-notification"
   username   = each.value
