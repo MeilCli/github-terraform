@@ -16,10 +16,6 @@ locals {
       description = "generalized lint reporter action",
       topics      = ["lint", "reporting", "github-actions"]
     }
-    "review-state-action" = {
-      description = "WIP repository",
-      topics      = []
-    }
   }
 }
 
