@@ -31,7 +31,7 @@ resource "github_branch_protection" "action-template_master" {
   }
   required_status_checks {
     strict   = false
-    contexts = ["build"]
+    contexts = ["build / build"]
   }
 }
 
